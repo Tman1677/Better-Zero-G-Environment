@@ -114,34 +114,34 @@ public class RotationHandler : MonoBehaviour {
 		//camera
 		if (Time.timeScale != 0) {
 			if (axes == RotationAxes.MouseXAndY) {
-				rotationX += Input.GetAxis ("Mouse X") * sensitivityX;
+				rotationX += Input.GetAxis ("Mouse X") * sensitivityX;//get mouse input
 				rotationY += Input.GetAxis ("Mouse Y") * sensitivityY;
-				rotationX = ClampAngle (rotationX, minimumX, maximumX);
-				rotationY = ClampAngle (rotationY, minimumY, maximumY);
+				rotationX = ClampAngle (rotationX, minimumX, maximumX); //make it a value between -360 and 360
+				rotationY = ClampAngle (rotationY, minimumY, maximumY); //make it a value between -360 and 360
 
-				Quaternion xQuaternion = Quaternion.AngleAxis (rotationX, Vector3.up);
-				Quaternion yQuaternion = Quaternion.AngleAxis (rotationY, -Vector3.right);
-				body.localRotation = baseBodyRotation * xQuaternion;
-				cam.localRotation = baseHeadRotation * yQuaternion;
+				Quaternion xQuaternion = Quaternion.AngleAxis (rotationX, Vector3.up); //make a Quaternion rotation out of it
+				Quaternion yQuaternion = Quaternion.AngleAxis (rotationY, -Vector3.right);//make a Quaternion rotation out of it
+				body.localRotation = baseBodyRotation * xQuaternion; //apply the horizontal rotation to the body
+				cam.localRotation = baseHeadRotation * yQuaternion; //apply the vertical rotation to the head
 			} else if (axes == RotationAxes.MouseX)
 			{
-				rotationX += Input.GetAxis("Mouse X") * sensitivityX;
-				rotationX = ClampAngle (rotationX, minimumX, maximumX);
-				Quaternion xQuaternion = Quaternion.AngleAxis (rotationX, Vector3.up);
-				body.localRotation = baseBodyRotation * xQuaternion;
+				rotationX += Input.GetAxis("Mouse X") * sensitivityX;//get mouse input
+				rotationX = ClampAngle (rotationX, minimumX, maximumX); //make it a value between -360 and 360
+				Quaternion xQuaternion = Quaternion.AngleAxis (rotationX, Vector3.up);//make a Quaternion rotation out of it
+				body.localRotation = baseBodyRotation * xQuaternion; //apply the horizontal rotation to the body
 			}
 			else
 			{
-				rotationY += Input.GetAxis("Mouse Y") * sensitivityY;
-				rotationY = ClampAngle (rotationY, minimumY, maximumY);
-				Quaternion yQuaternion = Quaternion.AngleAxis (rotationY, -Vector3.right);
-				cam.localRotation = baseHeadRotation * yQuaternion;
+				rotationY += Input.GetAxis("Mouse Y") * sensitivityY;//get mouse input
+				rotationY = ClampAngle (rotationY, minimumY, maximumY); //make it a value between -360 and 360
+				Quaternion yQuaternion = Quaternion.AngleAxis (rotationY, -Vector3.right);//make a Quaternion rotation out of it
+				cam.localRotation = baseHeadRotation * yQuaternion; //apply the vertical rotation to the head
 			}
 		}
 	}
 
 	//camera
-	public static float ClampAngle (float angle, float min, float max) {
+	public static float ClampAngle (float angle, float min, float max) { //clamp angles to between -360 and 360
 		while (angle < -360F)
 			angle += 360F;
 		while (angle > 360F)
