@@ -7,10 +7,10 @@ public class BasicMovement : MonoBehaviour {
 	public bool contact = true; //pretty universal test to check if touching a wall or not
 	public Rigidbody playerRB; //to be assigned to body of player
 	public Transform cam; //to be assigned to the head of the player, ie camera
-	public static float jumpSpeed = 20; //multiplier for how fast one jumps
-
+	public float jumpSpeed = 20; //multiplier for how fast one jumps
+	RotationHandler rotationHandler;
 	void Start () {
-		
+		rotationHandler = GetComponent<RotationHandler>();
 	}
 	
 
@@ -43,9 +43,9 @@ public class BasicMovement : MonoBehaviour {
 
 
 	void sliding() {
-		Vector3 tempVelocity = Quaternion.Inverse(RotationHandler.desiredRotation) * playerRB.velocity;//all of this is in an effort to 
+		Vector3 tempVelocity = Quaternion.Inverse(rotationHandler.desiredRotation) * playerRB.velocity;//all of this is in an effort to 
 		tempVelocity = new Vector3(tempVelocity.x,0,tempVelocity.z); //remove the "vertical" components from when you hit the wall
-		playerRB.velocity = RotationHandler.desiredRotation * tempVelocity; //while retaining horizontal speed. 
+		playerRB.velocity = rotationHandler.desiredRotation * tempVelocity; //while retaining horizontal speed. 
 		//this could almost definitely be handled better but it's what I could think up and I use this method often
 	}
 
@@ -54,9 +54,9 @@ public class BasicMovement : MonoBehaviour {
 			if (contact) {
 				if (RotationHandler.sameObject) { //tell whether you're jumping onto the object you're already on, passed from RotationHandler
 					if (Input.GetKey (KeyCode.LeftShift)) { //if so only allow iit if wall sliding
-						Vector3 tempVelocity = Quaternion.Inverse (RotationHandler.desiredRotation) * cam.forward;
+						Vector3 tempVelocity = Quaternion.Inverse (rotationHandler.desiredRotation) * cam.forward;
 						tempVelocity = new Vector3 (tempVelocity.x, 0, tempVelocity.z);
-						playerRB.velocity = RotationHandler.desiredRotation * tempVelocity * jumpSpeed;
+						playerRB.velocity = rotationHandler.desiredRotation * tempVelocity * jumpSpeed;
 					}
 				} else { //otherwise jump normally
 					playerRB.velocity = cam.forward * jumpSpeed;
@@ -80,22 +80,22 @@ public class BasicMovement : MonoBehaviour {
 			only for small precise movements*/
 			if (playerRB.velocity.magnitude < 3) {
 				if (Input.GetKey (KeyCode.W)) {
-					Vector3 tempVelocity = Quaternion.Inverse (RotationHandler.desiredRotation) * cam.forward;
+					Vector3 tempVelocity = Quaternion.Inverse (rotationHandler.desiredRotation) * cam.forward;
 					tempVelocity = new Vector3 (tempVelocity.x, 0, tempVelocity.z);
-					playerRB.velocity = RotationHandler.desiredRotation * tempVelocity;
+					playerRB.velocity = rotationHandler.desiredRotation * tempVelocity;
 				} else if (Input.GetKey (KeyCode.S)) {
-					Vector3 tempVelocity = Quaternion.Inverse (RotationHandler.desiredRotation) * -cam.forward;
+					Vector3 tempVelocity = Quaternion.Inverse (rotationHandler.desiredRotation) * -cam.forward;
 					tempVelocity = new Vector3 (tempVelocity.x, 0, tempVelocity.z);
-					playerRB.velocity = RotationHandler.desiredRotation * tempVelocity;
+					playerRB.velocity = rotationHandler.desiredRotation * tempVelocity;
 				}
 				if (Input.GetKey (KeyCode.D)) {
-					Vector3 tempVelocity = Quaternion.Inverse (RotationHandler.desiredRotation) * cam.right;
+					Vector3 tempVelocity = Quaternion.Inverse (rotationHandler.desiredRotation) * cam.right;
 					tempVelocity = new Vector3 (tempVelocity.x, 0, tempVelocity.z);
-					playerRB.velocity = RotationHandler.desiredRotation * tempVelocity;
+					playerRB.velocity = rotationHandler.desiredRotation * tempVelocity;
 				} else if (Input.GetKey (KeyCode.A)) {
-					Vector3 tempVelocity = Quaternion.Inverse (RotationHandler.desiredRotation) * -cam.right;
+					Vector3 tempVelocity = Quaternion.Inverse (rotationHandler.desiredRotation) * -cam.right;
 					tempVelocity = new Vector3 (tempVelocity.x, 0, tempVelocity.z);
-					playerRB.velocity = RotationHandler.desiredRotation * tempVelocity;
+					playerRB.velocity = rotationHandler.desiredRotation * tempVelocity;
 				}
 			}
 		}

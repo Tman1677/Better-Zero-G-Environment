@@ -52,7 +52,6 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\BasicMovement.cs" />
-     <Compile Include="Assets\CameraRotation.cs" />
      <Compile Include="Assets\GUICode.cs" />
      <Compile Include="Assets\GunRotation.cs" />
      <Compile Include="Assets\RotationHandler.cs" />

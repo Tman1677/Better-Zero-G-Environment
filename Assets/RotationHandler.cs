@@ -9,7 +9,7 @@ public class RotationHandler : MonoBehaviour {
 	public Transform body;
 	bool rotatingCheck = false; //unecessary thing I added because I felt it would save processing power, idk if it helps
 	[HideInInspector]
-	public static Quaternion desiredRotation;
+	public Quaternion desiredRotation;
 	[HideInInspector]
 	float distanceFrom; //later assigned to how far we are from where we will land
 	[HideInInspector]
@@ -62,9 +62,11 @@ public class RotationHandler : MonoBehaviour {
 	public float timeStamp;
 
 
+	BasicMovement basicMovement;
 	void Start () {
 		baseBodyRotation = body.localRotation;
 		baseHeadRotation = cam.localRotation;
+		basicMovement = GetComponent<BasicMovement> ();
 	}
 	
 
@@ -103,7 +105,7 @@ public class RotationHandler : MonoBehaviour {
 	}
 
 	void rotating() { //the slow rotations
-		float step = angleBetween * Time.deltaTime * BasicMovement.jumpSpeed / (distanceFrom); //determine optimal step value
+		float step = angleBetween * Time.deltaTime * basicMovement.jumpSpeed / (distanceFrom); //determine optimal step value
 		baseBodyRotation = Quaternion.RotateTowards(baseBodyRotation, desiredRotation, step); //rotate once a tick
 		if (baseBodyRotation == desiredRotation) { //that saving processing power goal
 			rotatingCheck = false;
