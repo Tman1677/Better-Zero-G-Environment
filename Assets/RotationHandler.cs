@@ -1,12 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//to be assigned to player body
 public class RotationHandler : MonoBehaviour {
 	
 	RaycastHit hit; //the raycast to see which object we will be landing on, borrowed by BasicMovement via the sameObject bool
-	public Transform cam; //to be assigned to the head of the player, ie camera
-	public Transform body;
+	Transform cam; //to be assigned to the head of the player, ie camera
+	Transform body;
 	bool rotatingCheck = false; //unecessary thing I added because I felt it would save processing power, idk if it helps
 	[HideInInspector]
 	public Quaternion desiredRotation;
@@ -18,7 +18,7 @@ public class RotationHandler : MonoBehaviour {
 	public static bool sameObject = false; //to be passed to BasicMovement as a second raycast seems redundant
 	[HideInInspector]
 	string lastObject; //used in detecting sameObject
-
+	float jumpVelocity;
 
 	//camera
 	[HideInInspector]
@@ -62,50 +62,50 @@ public class RotationHandler : MonoBehaviour {
 	public float timeStamp;
 
 
-	BasicMovement basicMovement;
+
 	void Start () {
+		body = transform;
+		cam = body.Find ("Main Camera");
 		baseBodyRotation = body.localRotation;
 		baseHeadRotation = cam.localRotation;
-		basicMovement = GetComponent<BasicMovement> ();
 	}
 	
 
 	void Update () {
-		jumpRotation (); //call the assignment method
 		if (rotatingCheck) {	rotating ();	} //brief check to save processing power before calling the grunt work method
 		cameraRotation();
 
 
 	}
 
-	void jumpRotation() { //setting up the rotation to be later done by rotating()
-		if (Input.GetKeyDown (KeyCode.Space)) { //should probably allow this key to be assigned
-			Ray rotationAnalyze = new Ray (body.position, cam.forward); 
-			if (Physics.Raycast (rotationAnalyze, out hit)) { //send out raycast and get the object it hits to use, named hit
-				if (hit.collider.name == lastObject) { //check if it's the same object we're already on, probably a better way to register this
-					sameObject = true; //passed to BasicMovement
-				} else {
-					sameObject = false; //passed to BasicMovement
-					lastObject = hit.collider.name; //assign new name to current landing platform
-					desiredRotation = hit.transform.rotation; //say this is the rotation we want
+	public void jumpRotation(Vector3 direction, float magnitude) { //setting up the rotation to be later done by rotating(), called by BasicMovement after jumping
+		jumpVelocity = magnitude;
+		Ray rotationAnalyze = new Ray (body.position, direction); 
+		if (Physics.Raycast (rotationAnalyze, out hit)) { //send out raycast and get the object it hits to use, named hit
+			if (hit.collider.name == lastObject) { //check if it's the same object we're already on, probably a better way to register this
+				sameObject = true; //passed to BasicMovement
 
-					//not ideal but best current situation I can think of to find the shortest angle
-					for (int i = 0; i < 720; i++) { //this is in a goal to prevent unweildy horizontal rotating of the camera
-						Quaternion temp = desiredRotation * Quaternion.AngleAxis (i, Vector3.up);
-						if (Quaternion.Angle (baseBodyRotation, desiredRotation) > Quaternion.Angle (baseBodyRotation, temp)) {
-							desiredRotation = temp;
-						}
-					}
-					rotatingCheck = true;
-					distanceFrom = hit.distance; //pretty much already explained this stuff above
-					angleBetween = Quaternion.Angle (baseBodyRotation, desiredRotation); 
+			} else {
+				sameObject = false; //passed to BasicMovement
+			}
+			lastObject = hit.collider.name; //assign new name to current landing platform
+			desiredRotation = hit.transform.rotation; //say this is the rotation we want
+
+			//not ideal but best current situation I can think of to find the shortest angle
+			for (int i = 0; i < 360; i++) { //this is in a goal to prevent unweildy horizontal rotating of the camera
+				Quaternion temp = desiredRotation * Quaternion.AngleAxis (i, Vector3.up);
+				if (Quaternion.Angle (baseBodyRotation, desiredRotation) > Quaternion.Angle (baseBodyRotation, temp)) {
+					desiredRotation = temp;
 				}
 			}
+			rotatingCheck = true;
+			distanceFrom = hit.distance; //pretty much already explained this stuff above
+			angleBetween = Quaternion.Angle (baseBodyRotation, desiredRotation); 
 		}
 	}
 
 	void rotating() { //the slow rotations
-		float step = angleBetween * Time.deltaTime * basicMovement.jumpSpeed / (distanceFrom); //determine optimal step value
+		float step = angleBetween * Time.deltaTime * jumpVelocity / (distanceFrom); //determine optimal step value
 		baseBodyRotation = Quaternion.RotateTowards(baseBodyRotation, desiredRotation, step); //rotate once a tick
 		if (baseBodyRotation == desiredRotation) { //that saving processing power goal
 			rotatingCheck = false;

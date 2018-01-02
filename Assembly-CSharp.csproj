@@ -52,8 +52,10 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\BasicMovement.cs" />
+     <Compile Include="Assets\CollisionHandler.cs" />
      <Compile Include="Assets\GUICode.cs" />
      <Compile Include="Assets\GunRotation.cs" />
+     <Compile Include="Assets\JetpackBoost.cs" />
      <Compile Include="Assets\RotationHandler.cs" />
  <Reference Include="UnityEngine.UIAutomation">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/UIAutomation/UnityEngine.UIAutomation.dll</HintPath>

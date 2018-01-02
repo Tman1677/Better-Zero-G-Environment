@@ -3,21 +3,37 @@ using System.Collections.Generic;
 using UnityEngine;
 //assign this script to the players body
 public class BasicMovement : MonoBehaviour {
+	public GameObject player;
 	[HideInInspector]
 	public bool contact = true; //pretty universal test to check if touching a wall or not
-	public Rigidbody playerRB; //to be assigned to body of player
-	public Transform cam; //to be assigned to the head of the player, ie camera
+	Rigidbody playerRB; //to be assigned to body of player
+	Transform body;
+	Transform cam; //to be assigned to the head of the player, ie camera
 	public float jumpSpeed = 20; //multiplier for how fast one jumps
 	RotationHandler rotationHandler;
 	void Start () {
-		rotationHandler = GetComponent<RotationHandler>();
+		body = transform;
+		playerRB = body.GetComponent<Rigidbody>();
+		cam = body.Find ("Main Camera");
+		rotationHandler = body.GetComponent<RotationHandler>();
 	}
 	
 
 	void Update () {
-		jump (); //code for jumping
 		climbing (); //code for slow movement with wasd
+		if (Input.GetKeyDown (KeyCode.Space)) {
+			if (contact) {
+				jump (); //code for jumping
+			} else {
+				try {
+					GameObject jetpack = body.Find ("Jetpack").gameObject;
+					JetpackBoost jetpackBoost = jetpack.GetComponent<JetpackBoost> ();
+					jetpackBoost.boost();
+				} catch {
 
+				}
+			}
+		}
 	}
 
 	void LateUpdate() {
@@ -26,23 +42,9 @@ public class BasicMovement : MonoBehaviour {
 		}
 	}
 
-	void OnCollisionEnter(Collision col) {
-		contact = true; //for use by other methods
-		if (!Input.GetKey (KeyCode.LeftShift)) { //if not holding left shift immediately stop
-			playerRB.velocity = new Vector3 (0, 0, 0);
-		} else if (Input.GetKey (KeyCode.LeftShift)) { //if holding left shift allow for wall sliding
-			sliding (); //code for wall sliding
-		} //yes I realize this if and else if looks strange but I wanted to open later possibilities up
-	}
 
 
-
-	void OnCollisionExit(Collision col) {
-		contact = false; //pretty basic, not quite sure if false positives from this will become a problem
-	}
-
-
-	void sliding() {
+	public void sliding() {
 		Vector3 tempVelocity = Quaternion.Inverse(rotationHandler.desiredRotation) * playerRB.velocity;//all of this is in an effort to 
 		tempVelocity = new Vector3(tempVelocity.x,0,tempVelocity.z); //remove the "vertical" components from when you hit the wall
 		playerRB.velocity = rotationHandler.desiredRotation * tempVelocity; //while retaining horizontal speed. 
@@ -50,19 +52,24 @@ public class BasicMovement : MonoBehaviour {
 	}
 
 	void jump() {
-		if (Input.GetKeyDown (KeyCode.Space)) {
-			if (contact) {
-				if (RotationHandler.sameObject) { //tell whether you're jumping onto the object you're already on, passed from RotationHandler
-					if (Input.GetKey (KeyCode.LeftShift)) { //if so only allow iit if wall sliding
-						Vector3 tempVelocity = Quaternion.Inverse (rotationHandler.desiredRotation) * cam.forward;
-						tempVelocity = new Vector3 (tempVelocity.x, 0, tempVelocity.z);
-						playerRB.velocity = rotationHandler.desiredRotation * tempVelocity * jumpSpeed;
-					}
-				} else { //otherwise jump normally
-					playerRB.velocity = cam.forward * jumpSpeed;
-					contact = false;
-				}
+		
+		try {
+			GameObject jetpack = transform.Find ("Jetpack").gameObject;
+			JetpackBoost jetpackBoost = jetpack.GetComponent<JetpackBoost> ();
+			jetpackBoost.fuel = 2;
+		} catch {
+
+		}
+		rotationHandler.jumpRotation (cam.forward, jumpSpeed);
+		if (RotationHandler.sameObject) { //tell whether you're jumping onto the object you're already on, passed from RotationHandler
+			if (Input.GetKey (KeyCode.LeftShift)) { //if so only allow iit if wall sliding
+				Vector3 tempVelocity = Quaternion.Inverse (rotationHandler.desiredRotation) * cam.forward;
+				tempVelocity = new Vector3 (tempVelocity.x, 0, tempVelocity.z);
+				playerRB.velocity = rotationHandler.desiredRotation * tempVelocity * jumpSpeed;
 			}
+		} else { //otherwise jump normally
+			playerRB.velocity = cam.forward * jumpSpeed;
+			contact = false;
 		}
 	}
 
