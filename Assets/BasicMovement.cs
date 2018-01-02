@@ -26,9 +26,9 @@ public class BasicMovement : MonoBehaviour {
 				jump (); //code for jumping
 			} else {
 				try {
-					GameObject jetpack = body.Find ("Jetpack").gameObject;
-					JetpackBoost jetpackBoost = jetpack.GetComponent<JetpackBoost> ();
-					jetpackBoost.boost();
+					GameObject jetpackTemp = body.Find ("Jetpack").gameObject;
+					Jetpack jetpack = jetpackTemp.GetComponent<Jetpack> ();
+					jetpack.boost();
 				} catch {
 
 				}
@@ -54,9 +54,9 @@ public class BasicMovement : MonoBehaviour {
 	void jump() {
 		
 		try {
-			GameObject jetpack = transform.Find ("Jetpack").gameObject;
-			JetpackBoost jetpackBoost = jetpack.GetComponent<JetpackBoost> ();
-			jetpackBoost.fuel = 2;
+			GameObject jetpackTemp = transform.Find ("Jetpack").gameObject;
+			Jetpack jetpack = jetpackTemp.GetComponent<Jetpack> ();
+			jetpack.fuel = 2;
 		} catch {
 
 		}
@@ -86,7 +86,31 @@ public class BasicMovement : MonoBehaviour {
 			and regular jumping and work people away from the wasd controls they are used to, but I still kept some sort of wasd
 			only for small precise movements*/
 			if (playerRB.velocity.magnitude < 3) {
-				if (Input.GetKey (KeyCode.W)) {
+				if (Input.GetKey (KeyCode.W) && Input.GetKey (KeyCode.A)) {
+					Vector3 temp = cam.forward - cam.right;
+					temp = temp / temp.magnitude;
+					Vector3 tempVelocity = Quaternion.Inverse (rotationHandler.desiredRotation) * temp;
+					tempVelocity = new Vector3 (tempVelocity.x, 0, tempVelocity.z);
+					playerRB.velocity = rotationHandler.desiredRotation * tempVelocity;
+				} else if (Input.GetKey (KeyCode.W) && Input.GetKey (KeyCode.D)) {
+					Vector3 temp = cam.forward + cam.right;
+					temp = temp / temp.magnitude;
+					Vector3 tempVelocity = Quaternion.Inverse (rotationHandler.desiredRotation) * temp;
+					tempVelocity = new Vector3 (tempVelocity.x, 0, tempVelocity.z);
+					playerRB.velocity = rotationHandler.desiredRotation * tempVelocity;
+				} else if (Input.GetKey (KeyCode.S) && Input.GetKey (KeyCode.A)) {
+					Vector3 temp = -cam.forward - cam.right;
+					temp = temp / temp.magnitude;
+					Vector3 tempVelocity = Quaternion.Inverse (rotationHandler.desiredRotation) * temp;
+					tempVelocity = new Vector3 (tempVelocity.x, 0, tempVelocity.z);
+					playerRB.velocity = rotationHandler.desiredRotation * tempVelocity;
+				} else if (Input.GetKey (KeyCode.S) && Input.GetKey (KeyCode.D)) {
+					Vector3 temp = -cam.forward + cam.right;
+					temp = temp / temp.magnitude;
+					Vector3 tempVelocity = Quaternion.Inverse (rotationHandler.desiredRotation) * temp;
+					tempVelocity = new Vector3 (tempVelocity.x, 0, tempVelocity.z);
+					playerRB.velocity = rotationHandler.desiredRotation * tempVelocity;
+				} else if (Input.GetKey (KeyCode.W)) {
 					Vector3 tempVelocity = Quaternion.Inverse (rotationHandler.desiredRotation) * cam.forward;
 					tempVelocity = new Vector3 (tempVelocity.x, 0, tempVelocity.z);
 					playerRB.velocity = rotationHandler.desiredRotation * tempVelocity;
@@ -94,8 +118,7 @@ public class BasicMovement : MonoBehaviour {
 					Vector3 tempVelocity = Quaternion.Inverse (rotationHandler.desiredRotation) * -cam.forward;
 					tempVelocity = new Vector3 (tempVelocity.x, 0, tempVelocity.z);
 					playerRB.velocity = rotationHandler.desiredRotation * tempVelocity;
-				}
-				if (Input.GetKey (KeyCode.D)) {
+				} else if (Input.GetKey (KeyCode.D)) {
 					Vector3 tempVelocity = Quaternion.Inverse (rotationHandler.desiredRotation) * cam.right;
 					tempVelocity = new Vector3 (tempVelocity.x, 0, tempVelocity.z);
 					playerRB.velocity = rotationHandler.desiredRotation * tempVelocity;
@@ -103,6 +126,8 @@ public class BasicMovement : MonoBehaviour {
 					Vector3 tempVelocity = Quaternion.Inverse (rotationHandler.desiredRotation) * -cam.right;
 					tempVelocity = new Vector3 (tempVelocity.x, 0, tempVelocity.z);
 					playerRB.velocity = rotationHandler.desiredRotation * tempVelocity;
+				} else {
+					playerRB.velocity = new Vector3 (0, 0, 0);
 				}
 			}
 		}

@@ -92,7 +92,7 @@ public class RotationHandler : MonoBehaviour {
 			desiredRotation = hit.transform.rotation; //say this is the rotation we want
 
 			//not ideal but best current situation I can think of to find the shortest angle
-			for (int i = 0; i < 360; i++) { //this is in a goal to prevent unweildy horizontal rotating of the camera
+			for (int i = 0; i < 720; i++) { //this is in a goal to prevent unweildy horizontal rotating of the camera
 				Quaternion temp = desiredRotation * Quaternion.AngleAxis (i, Vector3.up);
 				if (Quaternion.Angle (baseBodyRotation, desiredRotation) > Quaternion.Angle (baseBodyRotation, temp)) {
 					desiredRotation = temp;
