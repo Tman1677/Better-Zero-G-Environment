@@ -25,21 +25,20 @@ public class BasicMovement : MonoBehaviour {
 			if (contact) {
 				jump (); //code for jumping
 			} else {
-				try {
-					GameObject jetpackTemp = body.Find ("Jetpack").gameObject;
-					Jetpack jetpack = jetpackTemp.GetComponent<Jetpack> ();
-					jetpack.boost();
-				} catch {
-
+				foreach (Transform child in transform) {
+					if (child.CompareTag ("Jetpack")) {
+						Jetpack jetpack = child.GetComponent<Jetpack> ();
+						jetpack.boost ();
+					}
 				}
 			}
 		}
 	}
 
 	void LateUpdate() {
-		if (contact) {
-			grab (); //code for stopping movement when wall sliding
-		}
+		
+		Debug.Log (transform.position);
+		grab (); //code for stopping movement when wall sliding
 	}
 
 
@@ -52,13 +51,11 @@ public class BasicMovement : MonoBehaviour {
 	}
 
 	void jump() {
-		
-		try {
-			GameObject jetpackTemp = transform.Find ("Jetpack").gameObject;
-			Jetpack jetpack = jetpackTemp.GetComponent<Jetpack> ();
-			jetpack.fuel = 2;
-		} catch {
-
+		foreach (Transform child in transform) {
+			if (child.CompareTag ("Jetpack")) {
+				Jetpack jetpack = child.GetComponent<Jetpack> ();
+				jetpack.fuel = 2;
+			}
 		}
 		rotationHandler.jumpRotation (cam.forward, jumpSpeed);
 		if (RotationHandler.sameObject) { //tell whether you're jumping onto the object you're already on, passed from RotationHandler
@@ -74,8 +71,10 @@ public class BasicMovement : MonoBehaviour {
 	}
 
 	void grab() { //pretty self explanatory, not the if(contact) part is in the main method
-		if (Input.GetKeyUp (KeyCode.LeftShift)) {
-			playerRB.velocity = new Vector3 (0, 0, 0);
+		if (contact) {
+			if (Input.GetKeyUp (KeyCode.LeftShift)) {
+				playerRB.velocity = new Vector3 (0, 0, 0);
+			}
 		}
 	}
 

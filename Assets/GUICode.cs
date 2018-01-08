@@ -5,9 +5,12 @@ using UnityEngine.UI;
 
 public class GUICode : MonoBehaviour {
 
+	//crosshair
+	Texture2D crosshairTexture;
+	public float crosshairScale = 1;
+	int crosshairSize = 14;
+	int crosshairWidth = 2;
 	CursorLockMode wantedMode;
-	public Image crossHair;
-	public Text score;
 	// Apply requested cursor state
 	//	void SetCursorState ()
 	//	{
@@ -18,6 +21,8 @@ public class GUICode : MonoBehaviour {
 
 	void OnGUI ()
 	{
+		GUI.DrawTexture (new Rect (new Vector2(Screen.width/2 - crosshairSize/2,Screen.height/2 - crosshairWidth/2),new Vector2(crosshairSize,crosshairWidth)), crosshairTexture);
+		GUI.DrawTexture (new Rect (new Vector2(Screen.width/2 - crosshairWidth/2,Screen.height/2 - crosshairSize/2),new Vector2(crosshairWidth,crosshairSize)), crosshairTexture);
 		//GUILayout.BeginVertical ();
 		// Release cursor on escape keypress
 
@@ -55,18 +60,15 @@ public class GUICode : MonoBehaviour {
 
 	}
 
-	//crosshair
-	public Texture2D crosshairTexture;
-	public float crosshairScale = 1;
 
 	// Use this for initialization
 	void Start () {
 		Cursor.lockState = CursorLockMode.Locked;
+		crosshairTexture = new Texture2D(2,2);
 	}
 
 	// freezing motion and game events
 	void Update () {
-
 
 		if (Input.GetKeyDown (KeyCode.Escape) && Cursor.visible == false) {
 			Cursor.lockState = CursorLockMode.None;
