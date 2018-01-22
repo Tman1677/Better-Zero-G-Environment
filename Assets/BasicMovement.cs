@@ -37,7 +37,7 @@ public class BasicMovement : MonoBehaviour {
 
 	void LateUpdate() {
 		
-		Debug.Log (transform.position);
+
 		grab (); //code for stopping movement when wall sliding
 	}
 

@@ -7,6 +7,7 @@ public class GunRotation : MonoBehaviour {
 	//Transform gunTip;
 	Transform body;
 	RaycastHit hit;
+	float rotateSpeed = 3;
 	// Use this for initialization
 	void Start () {
 		cam = transform.parent;
@@ -22,7 +23,7 @@ public class GunRotation : MonoBehaviour {
 			Quaternion temp = Quaternion.LookRotation(relativePos);
 			temp = Quaternion.Inverse (body.rotation) * temp;
 			Quaternion desiredRotation = body.rotation * Quaternion.Euler(temp.eulerAngles.x,temp.eulerAngles.y,0);
-			transform.rotation = Quaternion.RotateTowards (transform.rotation, desiredRotation, 1f);
+			transform.rotation = Quaternion.RotateTowards (transform.rotation, desiredRotation, rotateSpeed);
 		}
 	}
 }

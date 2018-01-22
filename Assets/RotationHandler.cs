@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 //to be assigned to player body
 public class RotationHandler : MonoBehaviour {
-	
+
 	RaycastHit hit; //the raycast to see which object we will be landing on, borrowed by BasicMovement via the sameObject bool
 	Transform cam; //to be assigned to the head of the player, ie camera
 	Transform body;
@@ -19,6 +19,7 @@ public class RotationHandler : MonoBehaviour {
 	[HideInInspector]
 	string lastObject; //used in detecting sameObject
 	float jumpVelocity;
+	//int wallsLayer = -1;
 
 	//camera
 	[HideInInspector]
@@ -69,7 +70,7 @@ public class RotationHandler : MonoBehaviour {
 		baseBodyRotation = body.localRotation;
 		baseHeadRotation = cam.localRotation;
 	}
-	
+
 
 	void Update () {
 		if (rotatingCheck) {	rotating ();	} //brief check to save processing power before calling the grunt work method
@@ -80,8 +81,26 @@ public class RotationHandler : MonoBehaviour {
 
 	public void jumpRotation(Vector3 direction, float magnitude) { //setting up the rotation to be later done by rotating(), called by BasicMovement after jumping
 		jumpVelocity = magnitude;
-		Ray rotationAnalyze = new Ray (body.position, direction); 
-		if (Physics.Raycast (rotationAnalyze, out hit)) { //send out raycast and get the object it hits to use, named hit
+
+
+		if (Physics.Raycast (body.position, direction, out hit)) { //send out raycast and get the object it hits to use, named hit
+			if (hit.collider.tag == "Wall") {
+
+				desiredRotation = hit.transform.rotation; //say this is the rotation we want
+
+				//not ideal but best current situation I can think of to find the shortest angle
+				for (int i = 0; i < 720; i++) { //this is in a goal to prevent unweildy horizontal rotating of the camera
+					Quaternion temp = desiredRotation * Quaternion.AngleAxis (i, Vector3.up);
+					if (Quaternion.Angle (baseBodyRotation, desiredRotation) > Quaternion.Angle (baseBodyRotation, temp)) {
+						desiredRotation = temp;
+					}
+				}
+				rotatingCheck = true;
+				distanceFrom = hit.distance; //pretty much already explained this stuff above
+				angleBetween = Quaternion.Angle (baseBodyRotation, desiredRotation); 
+			} else {
+
+			}
 			if (hit.collider.name == lastObject) { //check if it's the same object we're already on, probably a better way to register this
 				sameObject = true; //passed to BasicMovement
 
@@ -89,18 +108,7 @@ public class RotationHandler : MonoBehaviour {
 				sameObject = false; //passed to BasicMovement
 			}
 			lastObject = hit.collider.name; //assign new name to current landing platform
-			desiredRotation = hit.transform.rotation; //say this is the rotation we want
 
-			//not ideal but best current situation I can think of to find the shortest angle
-			for (int i = 0; i < 720; i++) { //this is in a goal to prevent unweildy horizontal rotating of the camera
-				Quaternion temp = desiredRotation * Quaternion.AngleAxis (i, Vector3.up);
-				if (Quaternion.Angle (baseBodyRotation, desiredRotation) > Quaternion.Angle (baseBodyRotation, temp)) {
-					desiredRotation = temp;
-				}
-			}
-			rotatingCheck = true;
-			distanceFrom = hit.distance; //pretty much already explained this stuff above
-			angleBetween = Quaternion.Angle (baseBodyRotation, desiredRotation); 
 		}
 	}
 
@@ -118,8 +126,8 @@ public class RotationHandler : MonoBehaviour {
 			if (axes == RotationAxes.MouseXAndY) {
 				rotationX += Input.GetAxis ("Mouse X") * sensitivityX;//get mouse input
 				rotationY += Input.GetAxis ("Mouse Y") * sensitivityY;
-				rotationX = ClampAngle (rotationX, minimumX, maximumX); //make it a value between -360 and 360
-				rotationY = ClampAngle (rotationY, minimumY, maximumY); //make it a value between -360 and 360
+				rotationX = ClampAngle (rotationX, minimumX, maximumX); //make it a value between minX and maxX
+				rotationY = ClampAngle (rotationY, minimumY, maximumY); //make it a value between minY and maxY
 
 				Quaternion xQuaternion = Quaternion.AngleAxis (rotationX, Vector3.up); //make a Quaternion rotation out of it
 				Quaternion yQuaternion = Quaternion.AngleAxis (rotationY, -Vector3.right);//make a Quaternion rotation out of it

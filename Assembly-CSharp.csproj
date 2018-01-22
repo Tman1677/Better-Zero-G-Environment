@@ -57,7 +57,26 @@
      <Compile Include="Assets\GunRotation.cs" />
      <Compile Include="Assets\Jetpack.cs" />
      <Compile Include="Assets\Laser.cs" />
+     <Compile Include="Assets\OldRotationHandler.cs" />
      <Compile Include="Assets\RotationHandler.cs" />
+     <Compile Include="Assets\Shooting.cs" />
+     <Compile Include="Assets\VolumetricLines\ExampleScenes\ExampleScripts\CannonBehavior.cs" />
+     <Compile Include="Assets\VolumetricLines\ExampleScenes\ExampleScripts\CreateSinShapedLineStrip.cs" />
+     <Compile Include="Assets\VolumetricLines\ExampleScenes\ExampleScripts\ShotBehavior.cs" />
+     <Compile Include="Assets\VolumetricLines\Scripts\Utils\TransformExtensionMethods.cs" />
+     <Compile Include="Assets\VolumetricLines\Scripts\VolumetricLineBehavior.cs" />
+     <Compile Include="Assets\VolumetricLines\Scripts\VolumetricLineSettings.cs" />
+     <Compile Include="Assets\VolumetricLines\Scripts\VolumetricLineStripBehavior.cs" />
+     <Compile Include="Assets\VolumetricLines\Scripts\VolumetricLineVertexData.cs" />
+     <Compile Include="Assets\VolumetricLines\Scripts\VolumetricMultiLineBehavior.cs" />
+     <None Include="Assets\VolumetricLines\Shaders\_StripShader.cginc" />
+     <None Include="Assets\VolumetricLines\Shaders\Additive.shader" />
+     <None Include="Assets\VolumetricLines\Shaders\AlphaBlended.shader" />
+     <None Include="Assets\VolumetricLines\Shaders\Strip-Additive.shader" />
+     <None Include="Assets\VolumetricLines\Shaders\Fast-AlphaBlended.shader" />
+     <None Include="Assets\VolumetricLines\Shaders\Strip-AlphaBlended.shader" />
+     <None Include="Assets\VolumetricLines\Shaders\Fast-Additive.shader" />
+     <None Include="Assets\VolumetricLines\Shaders\_SimpleShader.cginc" />
  <Reference Include="UnityEngine.UIAutomation">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/UIAutomation/UnityEngine.UIAutomation.dll</HintPath>
  </Reference>
