@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 //to be assigned to player body
 public class RotationHandler : MonoBehaviour {
 
 	RaycastHit hit; //the raycast to see which object we will be landing on, borrowed by BasicMovement via the sameObject bool
-	Transform cam; //to be assigned to the head of the player, ie camera
+	Transform head; //to be assigned to the head of the player, ie camera
 	Transform body;
 	bool rotatingCheck = false; //unecessary thing I added because I felt it would save processing power, idk if it helps
 	[HideInInspector]
@@ -66,9 +67,9 @@ public class RotationHandler : MonoBehaviour {
 
 	void Start () {
 		body = transform;
-		cam = body.Find ("Main Camera");
+		head = body.Find ("Head");
 		baseBodyRotation = body.localRotation;
-		baseHeadRotation = cam.localRotation;
+		baseHeadRotation = head.localRotation;
 	}
 
 
@@ -132,7 +133,7 @@ public class RotationHandler : MonoBehaviour {
 				Quaternion xQuaternion = Quaternion.AngleAxis (rotationX, Vector3.up); //make a Quaternion rotation out of it
 				Quaternion yQuaternion = Quaternion.AngleAxis (rotationY, -Vector3.right);//make a Quaternion rotation out of it
 				body.localRotation = baseBodyRotation * xQuaternion; //apply the horizontal rotation to the body
-				cam.localRotation = baseHeadRotation * yQuaternion; //apply the vertical rotation to the head
+				head.localRotation = baseHeadRotation * yQuaternion; //apply the vertical rotation to the head
 			} else if (axes == RotationAxes.MouseX)
 			{
 				rotationX += Input.GetAxis("Mouse X") * sensitivityX;//get mouse input
@@ -145,7 +146,7 @@ public class RotationHandler : MonoBehaviour {
 				rotationY += Input.GetAxis("Mouse Y") * sensitivityY;//get mouse input
 				rotationY = ClampAngle (rotationY, minimumY, maximumY); //make it a value between -360 and 360
 				Quaternion yQuaternion = Quaternion.AngleAxis (rotationY, -Vector3.right);//make a Quaternion rotation out of it
-				cam.localRotation = baseHeadRotation * yQuaternion; //apply the vertical rotation to the head
+				head.localRotation = baseHeadRotation * yQuaternion; //apply the vertical rotation to the head
 			}
 		}
 	}

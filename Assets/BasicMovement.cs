@@ -1,9 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 //assign this script to the players body
-public class BasicMovement : MonoBehaviour {
-	public GameObject player;
+public class BasicMovement : NetworkBehaviour {
 	[HideInInspector]
 	public bool contact = true; //pretty universal test to check if touching a wall or not
 	Rigidbody playerRB; //to be assigned to body of player
@@ -11,15 +11,26 @@ public class BasicMovement : MonoBehaviour {
 	Transform cam; //to be assigned to the head of the player, ie camera
 	public float jumpSpeed = 20; //multiplier for how fast one jumps
 	RotationHandler rotationHandler;
+	public override void OnStartLocalPlayer() {
+		GameObject camera = GameObject.Find ("Main Camera");
+		camera.transform.parent = transform.Find ("Head");
+		camera.transform.localPosition = new Vector3 (0, 0, 0);
+	}
+
 	void Start () {
+		contact = true;
 		body = transform;
 		playerRB = body.GetComponent<Rigidbody>();
-		cam = body.Find ("Main Camera");
+		cam = body.Find ("Head").Find("Main Camera");
 		rotationHandler = body.GetComponent<RotationHandler>();
+		transform.position = new Vector3 (0, -48.5f, 0);
 	}
 	
 
 	void Update () {
+		if (!isLocalPlayer) {
+			return;
+		}
 		climbing (); //code for slow movement with wasd
 		if (Input.GetKeyDown (KeyCode.Space)) {
 			if (contact) {
@@ -131,4 +142,5 @@ public class BasicMovement : MonoBehaviour {
 			}
 		}
 	}
+
 }
