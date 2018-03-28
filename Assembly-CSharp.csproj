@@ -22,7 +22,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>Temp\bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_3_0;UNITY_2017_3;UNITY_2017;PLATFORM_ARCH_64;UNITY_64;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_GENERICS;ENABLE_PVR_GI;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_GRID;ENABLE_TILEMAP;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_DIRECTOR;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_TIMELINE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;ENABLE_NATIVE_ARRAY;ENABLE_SPRITE_MASKING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;ENABLE_MONO_BDWGC;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_VIDEO;ENABLE_RMGUI;ENABLE_PACKMAN;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_STYLE_SHEETS;ENABLE_LOCALIZATION;PLATFORM_STANDALONE_OSX;PLATFORM_STANDALONE;UNITY_STANDALONE_OSX;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_GAMECENTER;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_NATIVE_CRASH_REPORTING;ENABLE_CLUSTERINPUT;ENABLE_VR;ENABLE_AR;ENABLE_SPATIALTRACKING;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;NET_2_0_SUBSET;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_OSX;ENABLE_NATIVE_ARRAY_CHECKS;UNITY_TEAM_LICENSE</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_3_1;UNITY_2017_3;UNITY_2017;PLATFORM_ARCH_64;UNITY_64;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_GENERICS;ENABLE_PVR_GI;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_GRID;ENABLE_TILEMAP;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_DIRECTOR;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_TIMELINE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;ENABLE_NATIVE_ARRAY;ENABLE_SPRITE_MASKING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;ENABLE_MONO_BDWGC;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_VIDEO;ENABLE_RMGUI;ENABLE_PACKMAN;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_STYLE_SHEETS;ENABLE_LOCALIZATION;PLATFORM_STANDALONE_OSX;PLATFORM_STANDALONE;UNITY_STANDALONE_OSX;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_GAMECENTER;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_NATIVE_CRASH_REPORTING;ENABLE_CLUSTERINPUT;ENABLE_VR;ENABLE_AR;ENABLE_SPATIALTRACKING;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;NET_2_0_SUBSET;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_OSX;ENABLE_NATIVE_ARRAY_CHECKS;UNITY_TEAM_LICENSE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
@@ -51,37 +51,63 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\BasicMovement.cs" />
-     <Compile Include="Assets\CollisionHandler.cs" />
-     <Compile Include="Assets\GUICode.cs" />
-     <Compile Include="Assets\GunRotation.cs" />
-     <Compile Include="Assets\Jetpack.cs" />
-     <Compile Include="Assets\Laser.cs" />
-     <Compile Include="Assets\OldRotationHandler.cs" />
-     <Compile Include="Assets\RotationHandler.cs" />
-     <Compile Include="Assets\Shooting.cs" />
-     <Compile Include="Assets\VolumetricLines\ExampleScenes\ExampleScripts\CannonBehavior.cs" />
-     <Compile Include="Assets\VolumetricLines\ExampleScenes\ExampleScripts\CreateSinShapedLineStrip.cs" />
-     <Compile Include="Assets\VolumetricLines\ExampleScenes\ExampleScripts\ShotBehavior.cs" />
-     <Compile Include="Assets\VolumetricLines\Scripts\Utils\TransformExtensionMethods.cs" />
-     <Compile Include="Assets\VolumetricLines\Scripts\VolumetricLineBehavior.cs" />
-     <Compile Include="Assets\VolumetricLines\Scripts\VolumetricLineSettings.cs" />
-     <Compile Include="Assets\VolumetricLines\Scripts\VolumetricLineStripBehavior.cs" />
-     <Compile Include="Assets\VolumetricLines\Scripts\VolumetricLineVertexData.cs" />
-     <Compile Include="Assets\VolumetricLines\Scripts\VolumetricMultiLineBehavior.cs" />
-     <None Include="Assets\VolumetricLines\Shaders\_StripShader.cginc" />
-     <None Include="Assets\VolumetricLines\Shaders\Additive.shader" />
-     <None Include="Assets\VolumetricLines\Shaders\AlphaBlended.shader" />
-     <None Include="Assets\VolumetricLines\Shaders\Strip-Additive.shader" />
-     <None Include="Assets\VolumetricLines\Shaders\Fast-AlphaBlended.shader" />
-     <None Include="Assets\VolumetricLines\Shaders\Strip-AlphaBlended.shader" />
-     <None Include="Assets\VolumetricLines\Shaders\Fast-Additive.shader" />
-     <None Include="Assets\VolumetricLines\Shaders\_SimpleShader.cginc" />
- <Reference Include="UnityEngine.UIAutomation">
- <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/UIAutomation/UnityEngine.UIAutomation.dll</HintPath>
+     <Compile Include="Assets\inGame\NetworkController.cs" />
+     <Compile Include="Assets\inGame\NetworkManagerHUD.cs" />
+     <Compile Include="Assets\inGame\Old\Laser.cs" />
+     <Compile Include="Assets\inGame\Old\OldRotationHandler.cs" />
+     <Compile Include="Assets\inGame\Old\Shooting.cs" />
+     <Compile Include="Assets\inGame\PlayerScripts\BasicMovement.cs" />
+     <Compile Include="Assets\inGame\PlayerScripts\CollisionHandler.cs" />
+     <Compile Include="Assets\inGame\PlayerScripts\GUICode.cs" />
+     <Compile Include="Assets\inGame\PlayerScripts\GunRotation.cs" />
+     <Compile Include="Assets\inGame\PlayerScripts\Jetpack.cs" />
+     <Compile Include="Assets\inGame\PlayerScripts\Player.cs" />
+     <Compile Include="Assets\inGame\PlayerScripts\PlayerScript.cs" />
+     <Compile Include="Assets\inGame\PlayerScripts\RotationHandler.cs" />
+     <Compile Include="Assets\inGame\StaticAccess.cs" />
+     <Compile Include="Assets\inGame\VolumetricLines\ExampleScenes\ExampleScripts\CannonBehavior.cs" />
+     <Compile Include="Assets\inGame\VolumetricLines\ExampleScenes\ExampleScripts\CreateSinShapedLineStrip.cs" />
+     <Compile Include="Assets\inGame\VolumetricLines\ExampleScenes\ExampleScripts\ShotBehavior.cs" />
+     <Compile Include="Assets\inGame\VolumetricLines\Scripts\Utils\TransformExtensionMethods.cs" />
+     <Compile Include="Assets\inGame\VolumetricLines\Scripts\VolumetricLineBehavior.cs" />
+     <Compile Include="Assets\inGame\VolumetricLines\Scripts\VolumetricLineSettings.cs" />
+     <Compile Include="Assets\inGame\VolumetricLines\Scripts\VolumetricLineStripBehavior.cs" />
+     <Compile Include="Assets\inGame\VolumetricLines\Scripts\VolumetricLineVertexData.cs" />
+     <Compile Include="Assets\inGame\VolumetricLines\Scripts\VolumetricMultiLineBehavior.cs" />
+     <Compile Include="Assets\UI\ButtonPressed.cs" />
+     <Compile Include="Assets\UI\SampleUI\Scripts\ActiveStateToggler.cs" />
+     <Compile Include="Assets\UI\SampleUI\Scripts\ApplicationManager.cs" />
+     <Compile Include="Assets\UI\SampleUI\Scripts\ChangeColor.cs" />
+     <Compile Include="Assets\UI\SampleUI\Scripts\DragMe.cs" />
+     <Compile Include="Assets\UI\SampleUI\Scripts\DragPanel.cs" />
+     <Compile Include="Assets\UI\SampleUI\Scripts\DropMe.cs" />
+     <Compile Include="Assets\UI\SampleUI\Scripts\PanelManager.cs" />
+     <Compile Include="Assets\UI\SampleUI\Scripts\ResizePanel.cs" />
+     <Compile Include="Assets\UI\SampleUI\Scripts\ScrollDetailTexture.cs" />
+     <Compile Include="Assets\UI\SampleUI\Scripts\ShowSliderValue.cs" />
+     <Compile Include="Assets\UI\SampleUI\Scripts\TiltWindow.cs" />
+     <None Include="Assets\inGame\VolumetricLines\Shaders\_StripShader.cginc" />
+     <None Include="Assets\inGame\VolumetricLines\Shaders\Additive.shader" />
+     <None Include="Assets\inGame\VolumetricLines\Shaders\AlphaBlended.shader" />
+     <None Include="Assets\UI\SampleUI\Fonts\Jupiter\LICENSE.txt" />
+     <None Include="Assets\UI\SampleUI\Textures and Sprites\SF UI\Background\LICENSE.txt" />
+     <None Include="Assets\inGame\VolumetricLines\Shaders\Strip-Additive.shader" />
+     <None Include="Assets\UI\SampleUI\Materials\UI-Default-No-Alpha.shader" />
+     <None Include="Assets\inGame\VolumetricLines\Shaders\Fast-AlphaBlended.shader" />
+     <None Include="Assets\inGame\VolumetricLines\Shaders\Strip-AlphaBlended.shader" />
+     <None Include="Assets\inGame\VolumetricLines\Shaders\Fast-Additive.shader" />
+     <None Include="Assets\inGame\VolumetricLines\Shaders\_SimpleShader.cginc" />
+ <Reference Include="UnityEngine.UI">
+ <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
- <Reference Include="UnityEditor.UIAutomation">
- <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/UIAutomation/Editor/UnityEditor.UIAutomation.dll</HintPath>
+ <Reference Include="UnityEditor.UI">
+ <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/Editor/UnityEditor.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Networking">
+ <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.Networking">
+ <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/Networking/Editor/UnityEditor.Networking.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.TestRunner">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/TestRunner/Editor/UnityEditor.TestRunner.dll</HintPath>
@@ -92,18 +118,6 @@
  <Reference Include="nunit.framework">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/TestRunner/net35/unity-custom/nunit.framework.dll</HintPath>
  </Reference>
- <Reference Include="UnityEngine.Networking">
- <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
- </Reference>
- <Reference Include="UnityEditor.Networking">
- <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/Networking/Editor/UnityEditor.Networking.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.UI">
- <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
- </Reference>
- <Reference Include="UnityEditor.UI">
- <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/Editor/UnityEditor.UI.dll</HintPath>
- </Reference>
  <Reference Include="UnityEngine.Timeline">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/Timeline/RuntimeEditor/UnityEngine.Timeline.dll</HintPath>
  </Reference>
@@ -112,6 +126,12 @@
  </Reference>
  <Reference Include="UnityEditor.TreeEditor">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/TreeEditor/Editor/UnityEditor.TreeEditor.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.UIAutomation">
+ <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/UIAutomation/UnityEngine.UIAutomation.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.UIAutomation">
+ <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/UIAutomation/Editor/UnityEditor.UIAutomation.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.GoogleAudioSpatializer">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/UnityGoogleAudioSpatializer/Editor/UnityEditor.GoogleAudioSpatializer.dll</HintPath>
