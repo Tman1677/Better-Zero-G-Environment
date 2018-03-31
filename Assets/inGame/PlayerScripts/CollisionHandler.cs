@@ -46,9 +46,10 @@ public class CollisionHandler : NetworkBehaviour, PlayerScript {
 	}
 	void OnCollisionExit(Collision col) {
 		player.contact = false; //pretty basic, not quite sure if false positives from this will become a problem
-		if (col.collider.tag != "Wall") {
-			player.rotationHandler.jumpRotation (player.rb.velocity, player.rb.velocity.magnitude);
-		}
+//		if (col.collider.tag != "Wall") {//I think this is messing with the player jetpack objects and shit
+//			//definitely needs fixing later with a tag system but for now I can safely remove it
+//			player.rotationHandler.jumpRotation (player.rb.velocity, player.rb.velocity.magnitude);
+//		}
 	}
 	#endregion
 

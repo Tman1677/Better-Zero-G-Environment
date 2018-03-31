@@ -49,12 +49,14 @@ public class BasicMovement : NetworkBehaviour, PlayerScript {
 		}
 	}
 	void jump() {
+		//refuiling jetpack after jumping from ground, should maybe put this to on collision
 		foreach (Transform child in transform) {
 			if (child.CompareTag ("Jetpack")) {
 				Jetpack jetpack = child.GetComponent<Jetpack> ();
 				jetpack.fuel = 2;
 			}
 		}
+
 		player.rotationHandler.jumpRotation (player.cam.transform.forward, player.jumpSpeed);
 		if (player.rotationHandler.sameObject) { //tell whether you're jumping onto the object you're already on, passed from RotationHandler
 			if (Input.GetKey (KeyCode.LeftShift)) { //if so only allow iit if wall sliding

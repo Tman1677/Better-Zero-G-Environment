@@ -105,12 +105,13 @@ public class RotationHandler : NetworkBehaviour, PlayerScript {
 
 
 		if (Physics.Raycast (player.body.transform.position, direction, out hit)) { //send out raycast and get the object it hits to use, named hit
-			Debug.Log(hit.collider.name + " Collider up: " + hit.transform.up + " Player up: " + player.body.transform.up + " " + desiredRotation);
-			if (hit.collider.tag == "Wall") {
+			//Debug.Log(hit.collider.name + " Collider up: " + hit.transform.up + " Player up: " + player.body.transform.up + " " + desiredRotation);
+		
+			//if (hit.collider.tag == "Wall") {
 				//this turns desiredRotation into one that has the right vertical alignment using the FromToRotation but keeps the original other rotations
-				desiredRotation = Quaternion.FromToRotation (player.body.transform.up, hit.transform.up) * baseBodyRotation; //order matters for global rotation
+				desiredRotation = Quaternion.FromToRotation (player.body.transform.up, hit.normal) * baseBodyRotation; //order matters for global rotation
 				angleBetween = -1; //start rotation to rotating()
-			}
+			//}
 			if (hit.collider.name == lastObject) { //check if it's the same object we're already on, probably a better way to register this
 				sameObject = true; //passed to BasicMovement
 
