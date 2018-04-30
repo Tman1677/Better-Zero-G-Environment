@@ -7,6 +7,7 @@ public class CollisionHandler : NetworkBehaviour, PlayerScript {
 	#region declarations
 	BasicMovement basicMovement;
 	Player player;
+
 	#endregion
 
 	#region onStart
@@ -22,30 +23,36 @@ public class CollisionHandler : NetworkBehaviour, PlayerScript {
 		if (!isLocalPlayer) {
 			return;
 		}
-		player.contact = checkContact ();
+		//player.contact = checkContact ();
 		
 	}
 	#endregion
 
 	#region onCollision
 	void OnCollisionEnter(Collision col) {
+		
 		if (!isLocalPlayer) {
 			return;
 		}
 		if (col.collider.tag == "Wall") {
 			player.contact = true; //for use by other methods
+			player.attached = col.gameObject;
 			if (!Input.GetKey (KeyCode.LeftShift)) { //if not holding left shift immediately stop
 				player.rb.velocity = new Vector3 (0, 0, 0);
 			} else if (Input.GetKey (KeyCode.LeftShift)) { //if holding left shift allow for wall sliding
 				basicMovement.sliding (); //code for wall sliding
 			} //yes I realize this if and else if looks strange but I wanted to open later possibilities up
+
 		} else if (col.collider.tag == "Jetpack") {
 			equipJetpack (col.gameObject);
-		} 
+		} else {
+
+		}
 
 	}
 	void OnCollisionExit(Collision col) {
-		player.contact = false; //pretty basic, not quite sure if false positives from this will become a problem
+		#warning this never triggers
+		//player.contact = false; //pretty basic, not quite sure if false positives from this will become a problem
 //		if (col.collider.tag != "Wall") {//I think this is messing with the player jetpack objects and shit
 //			//definitely needs fixing later with a tag system but for now I can safely remove it
 //			player.rotationHandler.jumpRotation (player.rb.velocity, player.rb.velocity.magnitude);
@@ -66,7 +73,7 @@ public class CollisionHandler : NetworkBehaviour, PlayerScript {
 
 
 	public  bool checkContact() {
-		Collider[] hitColliders = Physics.OverlapSphere(transform.position, 3);
+		Collider[] hitColliders = Physics.OverlapSphere(transform.position, 2);
 		for(int i = 0; i<hitColliders.Length; i++) {
 			if (hitColliders[i].tag == "Wall") {
 				return true;

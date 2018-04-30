@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 54874769400425416}
   - component: {fileID: 114957227648444840}
   - component: {fileID: 114499871020114594}
+  - component: {fileID: 114815100211618202}
   m_Layer: 0
   m_Name: Gun
   m_TagString: Gun
@@ -438,7 +439,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -486,7 +487,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   contact: 1
-  boostSpeed: 20
   rb: {fileID: 0}
   cam: {fileID: 0}
   head: {fileID: 0}
@@ -498,7 +498,11 @@ MonoBehaviour:
   gui: {fileID: 0}
   armpit: {fileID: 0}
   gun: {fileID: 0}
+  attached: {fileID: 0}
+  groundNormal: {x: 0, y: 0, z: 0}
   gunRotation: {fileID: 0}
+  jetpack: {fileID: 0}
+  boostSpeed: 20
   jumpSpeed: 20
 --- !u!114 &114260774614855988
 MonoBehaviour:
@@ -585,6 +589,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47c36b358d4644bd5a829aa6574e2580, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114815100211618202
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1966277455635124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8117fed4c82a54ce489367a00fe2fc24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletTemplate: {fileID: 114537344926964864, guid: e868a93af8a9f4fc2a3bd0afe66b57a1,
+    type: 2}
 --- !u!114 &114840893902900364
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -55,7 +55,7 @@
      <Compile Include="Assets\inGame\NetworkManagerHUD.cs" />
      <Compile Include="Assets\inGame\Old\Laser.cs" />
      <Compile Include="Assets\inGame\Old\OldRotationHandler.cs" />
-     <Compile Include="Assets\inGame\Old\Shooting.cs" />
+     <Compile Include="Assets\inGame\Old\OldShooting.cs" />
      <Compile Include="Assets\inGame\PlayerScripts\BasicMovement.cs" />
      <Compile Include="Assets\inGame\PlayerScripts\CollisionHandler.cs" />
      <Compile Include="Assets\inGame\PlayerScripts\GUICode.cs" />
@@ -64,6 +64,8 @@
      <Compile Include="Assets\inGame\PlayerScripts\Player.cs" />
      <Compile Include="Assets\inGame\PlayerScripts\PlayerScript.cs" />
      <Compile Include="Assets\inGame\PlayerScripts\RotationHandler.cs" />
+     <Compile Include="Assets\inGame\ShootingScripts\Bullet.cs" />
+     <Compile Include="Assets\inGame\ShootingScripts\Shooting.cs" />
      <Compile Include="Assets\inGame\StaticAccess.cs" />
      <Compile Include="Assets\inGame\VolumetricLines\ExampleScenes\ExampleScripts\CannonBehavior.cs" />
      <Compile Include="Assets\inGame\VolumetricLines\ExampleScenes\ExampleScripts\CreateSinShapedLineStrip.cs" />

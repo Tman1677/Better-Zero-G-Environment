@@ -5,7 +5,7 @@ public class RotationHandler : NetworkBehaviour, PlayerScript {
 	#region declarations
 	RaycastHit hit; //the raycast to see which object we will be landing on, borrowed by BasicMovement via the sameObject bool
 
-
+	LayerMask wallsOnly;
 	[HideInInspector]
 	public Quaternion desiredRotation;
 	float distanceFrom; //later assigned to how far we are from where we will land
@@ -43,6 +43,7 @@ public class RotationHandler : NetworkBehaviour, PlayerScript {
 		player = GetComponent<Player> ();
 		baseBodyRotation = player.body.transform.localRotation;
 		baseHeadRotation = player.head.transform.localRotation;
+		wallsOnly = 1 << LayerMask.NameToLayer ("Walls");
 	}
 	#endregion
 
@@ -53,8 +54,26 @@ public class RotationHandler : NetworkBehaviour, PlayerScript {
 		}
 		rotating ();
 		cameraRotation();
+		slidingCurves ();
 
+	}
+	void slidingCurves () {
+		if (Input.GetKey(KeyCode.LeftShift) && player.contact) { //the contact check may prove unecessary CHECK FOR REMOVAL
+			if (Physics.Raycast (player.body.transform.position + player.body.transform.forward * 0.1f, /*the .1 is the increment 
+			forward to check for a change in the normal position to allow smooth motion with the curve */
+				    -player.body.transform.up,
+				    out hit)) {
+				if (hit.collider.gameObject == player.attached) {
+					Quaternion change = Quaternion.FromToRotation (player.body.transform.up, hit.normal);
+					baseBodyRotation = change * baseBodyRotation;
+					player.rb.velocity = change * player.rb.velocity;
+					#warning needs a lot of work
 
+				}			
+			}
+		} else {
+			
+		}
 	}
 	void rotating() { //the slow rotations
 		if(angleBetween != 0) {
@@ -104,7 +123,7 @@ public class RotationHandler : NetworkBehaviour, PlayerScript {
 		jumpVelocity = magnitude;
 
 
-		if (Physics.Raycast (player.body.transform.position, direction, out hit)) { //send out raycast and get the object it hits to use, named hit
+		if (Physics.Raycast (player.body.transform.position, direction, out hit, wallsOnly)) { //send out raycast and get the object it hits to use, named hit
 			//Debug.Log(hit.collider.name + " Collider up: " + hit.transform.up + " Player up: " + player.body.transform.up + " " + desiredRotation);
 		
 			//if (hit.collider.tag == "Wall") {

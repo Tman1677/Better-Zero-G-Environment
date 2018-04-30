@@ -6,37 +6,25 @@ using UnityEngine.SceneManagement;
 
 public class Player : NetworkBehaviour {
 	#region declarations
-	[HideInInspector]
-	public bool contact = true; //pretty universal test to check if touching a wall or not
-	public float boostSpeed = 20;
-	[HideInInspector]
-	public Rigidbody rb;
-	[HideInInspector]
-	public GameObject cam;
-	[HideInInspector]
-	public GameObject head;
-	[HideInInspector]
-	public GameObject body;
-	[HideInInspector]
-	public GameObject mainCamera;
-	[HideInInspector]
-	public BasicMovement basicMovement;
-	[HideInInspector]
-	public RotationHandler rotationHandler;
-	[HideInInspector]
-	public CollisionHandler collisionHandler;
-	[HideInInspector]
-	public GUICode gui;
-	[HideInInspector]
-	public GameObject armpit;
-	[HideInInspector]
-	public GameObject gun;
-
-	[HideInInspector]
-	public GunRotation gunRotation;
-	Jetpack jetpack;
-	public float jumpSpeed = 20; //multiplier for how fast one jumps
-	List<PlayerScript> playerScripts = new List<PlayerScript>();
+	[HideInInspector]	public bool contact = true; //pretty universal test to check if touching a wall or not
+	[HideInInspector]	public Rigidbody rb;
+	[HideInInspector]	public GameObject cam;
+	[HideInInspector]	public GameObject head;
+	[HideInInspector]	public GameObject body;
+	[HideInInspector]	public GameObject mainCamera;
+	[HideInInspector]	public BasicMovement basicMovement;
+	[HideInInspector]	public RotationHandler rotationHandler;
+	[HideInInspector]	public CollisionHandler collisionHandler;
+	[HideInInspector]	public GUICode gui;
+	[HideInInspector]	public GameObject armpit;
+	[HideInInspector]	public GameObject gun;
+	[HideInInspector]	public GameObject attached;
+	[HideInInspector]	public Vector3 groundNormal;
+	[HideInInspector]	public GunRotation gunRotation;
+	[HideInInspector]	public Jetpack jetpack;
+						public float boostSpeed = 20;
+						public float jumpSpeed = 20; //multiplier for how fast one jumps
+						List<PlayerScript> playerScripts = new List<PlayerScript>();
 	#endregion
 
 	#region onStart
@@ -101,9 +89,7 @@ public class Player : NetworkBehaviour {
 		return null;
 	}
 	public GameObject getGun() {
-		Debug.Log ("test");
 		foreach(Transform child in head.transform) {
-			Debug.Log (child.name);
 			if (child.CompareTag("Gun")) {
 				return child.gameObject;
 			}

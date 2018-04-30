@@ -24,7 +24,7 @@ public class GunRotation : NetworkBehaviour, PlayerScript {
 	#region onUpdate
 	// Update is called once per frame
 	void Update () {
-		Ray rotationAnalyze = new Ray (player.cam.transform.position, player.cam.transform.forward);
+		//Ray rotationAnalyze = new Ray (player.cam.transform.position, player.cam.transform.forward);
 		if (!player.isLocalPlayer) {
 			player.armpit.transform.rotation = Quaternion.FromToRotation (player.armpit.transform.forward, player.cam.transform.forward) * player.armpit.transform.rotation;
 		}
