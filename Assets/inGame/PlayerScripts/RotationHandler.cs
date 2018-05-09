@@ -67,7 +67,7 @@ public class RotationHandler : NetworkBehaviour, PlayerScript {
 					Quaternion change = Quaternion.FromToRotation (player.body.transform.up, hit.normal);
 					baseBodyRotation = change * baseBodyRotation;
 					player.rb.velocity = change * player.rb.velocity;
-					#warning needs a lot of work
+					//TODO needs a lot of work
 
 				}			
 			}

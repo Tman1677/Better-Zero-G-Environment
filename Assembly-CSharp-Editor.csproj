@@ -9,10 +9,10 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{D0D79852-82AD-B532-FDF1-BC042CAB2645}</ProjectGuid>
+    <ProjectGuid>{15BD261C-EDE8-96BF-94BD-BDF3B857B3D6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <AssemblyName>Assembly-CSharp-Editor</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <BaseDirectory>Assets</BaseDirectory>
@@ -51,38 +51,35 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\inGame\NetworkController.cs" />
-     <Compile Include="Assets\inGame\NetworkManagerHUD.cs" />
-     <Compile Include="Assets\inGame\Old\Laser.cs" />
-     <Compile Include="Assets\inGame\Old\OldRotationHandler.cs" />
-     <Compile Include="Assets\inGame\Old\OldShooting.cs" />
-     <Compile Include="Assets\inGame\PlayerScripts\BasicMovement.cs" />
-     <Compile Include="Assets\inGame\PlayerScripts\CollisionHandler.cs" />
-     <Compile Include="Assets\inGame\PlayerScripts\GUICode.cs" />
-     <Compile Include="Assets\inGame\PlayerScripts\GunRotation.cs" />
-     <Compile Include="Assets\inGame\PlayerScripts\Health.cs" />
-     <Compile Include="Assets\inGame\PlayerScripts\Jetpack.cs" />
-     <Compile Include="Assets\inGame\PlayerScripts\Player.cs" />
-     <Compile Include="Assets\inGame\PlayerScripts\PlayerScript.cs" />
-     <Compile Include="Assets\inGame\PlayerScripts\RotationHandler.cs" />
-     <Compile Include="Assets\inGame\ShootingScripts\Bullet.cs" />
-     <Compile Include="Assets\inGame\ShootingScripts\Shooting.cs" />
-     <Compile Include="Assets\inGame\StaticAccess.cs" />
-     <Compile Include="Assets\UI\ButtonPressed.cs" />
-     <Compile Include="Assets\UI\SampleUI\Scripts\ActiveStateToggler.cs" />
-     <Compile Include="Assets\UI\SampleUI\Scripts\ApplicationManager.cs" />
-     <Compile Include="Assets\UI\SampleUI\Scripts\ChangeColor.cs" />
-     <Compile Include="Assets\UI\SampleUI\Scripts\DragMe.cs" />
-     <Compile Include="Assets\UI\SampleUI\Scripts\DragPanel.cs" />
-     <Compile Include="Assets\UI\SampleUI\Scripts\DropMe.cs" />
-     <Compile Include="Assets\UI\SampleUI\Scripts\PanelManager.cs" />
-     <Compile Include="Assets\UI\SampleUI\Scripts\ResizePanel.cs" />
-     <Compile Include="Assets\UI\SampleUI\Scripts\ScrollDetailTexture.cs" />
-     <Compile Include="Assets\UI\SampleUI\Scripts\ShowSliderValue.cs" />
-     <Compile Include="Assets\UI\SampleUI\Scripts\TiltWindow.cs" />
-     <None Include="Assets\UI\SampleUI\Fonts\Jupiter\LICENSE.txt" />
-     <None Include="Assets\UI\SampleUI\Textures and Sprites\SF UI\Background\LICENSE.txt" />
-     <None Include="Assets\UI\SampleUI\Materials\UI-Default-No-Alpha.shader" />
+     <Compile Include="Assets\BulletUnity\Examples\SceneMenu\Editor\UpdateScenesListMenu.cs" />
+     <Compile Include="Assets\BulletUnity\Scripts\Constraints\Editor\B6DOFConstraintEditor.cs" />
+     <Compile Include="Assets\BulletUnity\Scripts\Constraints\Editor\BBallSocketConstraintEditor.cs" />
+     <Compile Include="Assets\BulletUnity\Scripts\Constraints\Editor\BConeTwistConstraintEditor.cs" />
+     <Compile Include="Assets\BulletUnity\Scripts\Constraints\Editor\BFixedConstraintEditor.cs" />
+     <Compile Include="Assets\BulletUnity\Scripts\Constraints\Editor\BHingedConstraintEditor.cs" />
+     <Compile Include="Assets\BulletUnity\Scripts\Constraints\Editor\BSliderConstraintEditor.cs" />
+     <Compile Include="Assets\BulletUnity\Scripts\Constraints\Editor\BTypedConstraintEditor.cs" />
+     <Compile Include="Assets\BulletUnity\Scripts\Editor\BBoxShapeEditor.cs" />
+     <Compile Include="Assets\BulletUnity\Scripts\Editor\BBvhTriangleMeshShapeEditor.cs" />
+     <Compile Include="Assets\BulletUnity\Scripts\Editor\BCapsuleShapeEditor.cs" />
+     <Compile Include="Assets\BulletUnity\Scripts\Editor\BCollisionObjectEditor.cs" />
+     <Compile Include="Assets\BulletUnity\Scripts\Editor\BCompoundShapeEditor.cs" />
+     <Compile Include="Assets\BulletUnity\Scripts\Editor\BConeShapeEditor.cs" />
+     <Compile Include="Assets\BulletUnity\Scripts\Editor\BConvexHullShapeEditor.cs" />
+     <Compile Include="Assets\BulletUnity\Scripts\Editor\BConvexTriangleMeshShapeEditor.cs" />
+     <Compile Include="Assets\BulletUnity\Scripts\Editor\BCylinderShapeEditor.cs" />
+     <Compile Include="Assets\BulletUnity\Scripts\Editor\BGhostObjectEditor.cs" />
+     <Compile Include="Assets\BulletUnity\Scripts\Editor\BMultiSphereShapeEditor.cs" />
+     <Compile Include="Assets\BulletUnity\Scripts\Editor\BPairCachingGhostObjectEditor.cs" />
+     <Compile Include="Assets\BulletUnity\Scripts\Editor\BPhysicsWorldEditor.cs" />
+     <Compile Include="Assets\BulletUnity\Scripts\Editor\BPrimitiveComponentOrderSorter.cs" />
+     <Compile Include="Assets\BulletUnity\Scripts\Editor\BRigidBodyEditor.cs" />
+     <Compile Include="Assets\BulletUnity\Scripts\Editor\BSoftBodyComponentOrderSorter.cs" />
+     <Compile Include="Assets\BulletUnity\Scripts\Editor\BSoftBodyEditor.cs" />
+     <Compile Include="Assets\BulletUnity\Scripts\Editor\BSphereShapeEditor.cs" />
+     <Compile Include="Assets\BulletUnity\Scripts\Editor\EditorHelpers.cs" />
+     <Compile Include="Assets\BulletUnity\Scripts\Editor\EditorInterface.cs" />
+     <Compile Include="Assets\BulletUnity\Scripts\Editor\PrimitiveEditor.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
@@ -173,6 +170,12 @@
  <Reference Include="UnityEngine.StandardEvents">
  <HintPath>/Users/tristankreindler/Library/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.10/UnityEngine.StandardEvents.dll</HintPath>
  </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{88030CFE-CEE7-CB8C-8565-0D069AD2FBDC}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
+    <ProjectReference Include="Assembly-CSharp.csproj">
+      <Project>{D0D79852-82AD-B532-FDF1-BC042CAB2645}</Project>      <Name>Assembly-CSharp</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

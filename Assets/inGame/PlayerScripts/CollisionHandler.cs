@@ -51,7 +51,7 @@ public class CollisionHandler : NetworkBehaviour, PlayerScript {
 
 	}
 	void OnCollisionExit(Collision col) {
-		#warning this never triggers
+		//TODO this never triggers
 		//player.contact = false; //pretty basic, not quite sure if false positives from this will become a problem
 //		if (col.collider.tag != "Wall") {//I think this is messing with the player jetpack objects and shit
 //			//definitely needs fixing later with a tag system but for now I can safely remove it
