@@ -62,6 +62,8 @@
      <Compile Include="Assets\inGame\ShootingScripts\Bullet.cs" />
      <Compile Include="Assets\inGame\ShootingScripts\Shooting.cs" />
      <Compile Include="Assets\inGame\StaticAccess.cs" />
+     <Compile Include="Assets\Old Code\EnemyHealth.cs" />
+     <Compile Include="Assets\Old Code\EnemySpawner.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

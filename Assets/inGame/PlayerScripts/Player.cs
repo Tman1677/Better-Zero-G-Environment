@@ -30,8 +30,8 @@ public class Player : MonoBehaviour {
 
 	void Start() {
 
-		mainCamera = GameObject.Find ("Main Camera");
-		cam = transform.Find ("Head").Find ("Camera").gameObject;
+		//mainCamera = GameObject.Find ("Main Camera");
+		cam = transform.Find ("Head").Find ("Main Camera").gameObject;
 		head = transform.Find ("Head").gameObject;
 		gun = getGun ();
 		rb = GetComponent<Rigidbody> ();
@@ -61,10 +61,10 @@ public class Player : MonoBehaviour {
 
 	void localStart() { //initialization of player and calling player scripts loads in the correct order
 
-		mainCamera.GetComponent<Camera>().enabled = false;
-		cam.GetComponent<Camera>().enabled = true;
-		mainCamera.GetComponent<AudioListener> ().enabled = false;
-		cam.GetComponent<AudioListener> ().enabled = true;
+		//mainCamera.GetComponent<Camera>().enabled = false;
+		//cam.GetComponent<Camera>().enabled = true;
+		//mainCamera.GetComponent<AudioListener> ().enabled = false;
+		//cam.GetComponent<AudioListener> ().enabled = true;
 		transform.position = new Vector3 (0, -48.5f, 0);
 		rb.velocity = new Vector3 (0, 0, 0);
 		contact = true;

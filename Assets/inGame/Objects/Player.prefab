@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 81985796801946442}
   m_Layer: 0
   m_Name: Camera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -114,8 +114,6 @@ GameObject:
   - component: {fileID: 114908468190453782}
   - component: {fileID: 114169841190096738}
   - component: {fileID: 114375490434543694}
-  - component: {fileID: 114840893902900364}
-  - component: {fileID: 114410585686642316}
   - component: {fileID: 114955452355073094}
   m_Layer: 0
   m_Name: Player
@@ -135,8 +133,6 @@ GameObject:
   - component: {fileID: 33881061205959998}
   - component: {fileID: 23605844055136768}
   - component: {fileID: 54874769400425416}
-  - component: {fileID: 114957227648444840}
-  - component: {fileID: 114499871020114594}
   - component: {fileID: 114815100211618202}
   m_Layer: 0
   m_Name: Gun
@@ -248,7 +244,7 @@ Camera:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1795524554575794}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
@@ -501,7 +497,6 @@ MonoBehaviour:
   gun: {fileID: 0}
   attached: {fileID: 0}
   groundNormal: {x: 0, y: 0, z: 0}
-  gunRotation: {fileID: 0}
   jetpack: {fileID: 0}
   boostSpeed: 20
   jumpSpeed: 20
@@ -536,25 +531,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   paused: 0
   crosshairScale: 1
---- !u!114 &114410585686642316
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1848715882917754}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1267208747, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Target: {fileID: 4361358931106638}
-  m_ChildIndex: 1
-  m_SendInterval: 0.1
-  m_SyncRotationAxis: 7
-  m_RotationSyncCompression: 0
-  m_MovementThreshold: 0.001
-  m_InterpolateRotation: 0.5
-  m_InterpolateMovement: 0.5
 --- !u!114 &114442327781471760
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -579,17 +555,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fuel: 0
   rb: {fileID: 0}
---- !u!114 &114499871020114594
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1966277455635124}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47c36b358d4644bd5a829aa6574e2580, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114815100211618202
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -603,25 +568,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletTemplate: {fileID: 114537344926964864, guid: e868a93af8a9f4fc2a3bd0afe66b57a1,
     type: 2}
---- !u!114 &114840893902900364
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1848715882917754}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1267208747, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Target: {fileID: 4005054458902500}
-  m_ChildIndex: 0
-  m_SendInterval: 0.1
-  m_SyncRotationAxis: 7
-  m_RotationSyncCompression: 0
-  m_MovementThreshold: 0.001
-  m_InterpolateRotation: 0.5
-  m_InterpolateMovement: 0.5
 --- !u!114 &114908468190453782
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -687,19 +633,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
---- !u!114 &114957227648444840
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1966277455635124}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 733c9f9cab3b94fd2ae700d9d7e63ef9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  laser: {fileID: 114930135145266200, guid: 7f5746352e36e452db04709bdd6bddf8, type: 2}
-  shotSpeed: 50
 --- !u!124 &124605853692706842
 Behaviour:
   m_ObjectHideFlags: 1
