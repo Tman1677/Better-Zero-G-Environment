@@ -51,15 +51,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\inGame\NetworkController.cs" />
-     <Compile Include="Assets\inGame\NetworkManagerHUD.cs" />
-     <Compile Include="Assets\inGame\Old\Laser.cs" />
-     <Compile Include="Assets\inGame\Old\OldRotationHandler.cs" />
-     <Compile Include="Assets\inGame\Old\OldShooting.cs" />
      <Compile Include="Assets\inGame\PlayerScripts\BasicMovement.cs" />
      <Compile Include="Assets\inGame\PlayerScripts\CollisionHandler.cs" />
      <Compile Include="Assets\inGame\PlayerScripts\GUICode.cs" />
-     <Compile Include="Assets\inGame\PlayerScripts\GunRotation.cs" />
      <Compile Include="Assets\inGame\PlayerScripts\Health.cs" />
      <Compile Include="Assets\inGame\PlayerScripts\Jetpack.cs" />
      <Compile Include="Assets\inGame\PlayerScripts\Player.cs" />
@@ -68,21 +62,6 @@
      <Compile Include="Assets\inGame\ShootingScripts\Bullet.cs" />
      <Compile Include="Assets\inGame\ShootingScripts\Shooting.cs" />
      <Compile Include="Assets\inGame\StaticAccess.cs" />
-     <Compile Include="Assets\UI\ButtonPressed.cs" />
-     <Compile Include="Assets\UI\SampleUI\Scripts\ActiveStateToggler.cs" />
-     <Compile Include="Assets\UI\SampleUI\Scripts\ApplicationManager.cs" />
-     <Compile Include="Assets\UI\SampleUI\Scripts\ChangeColor.cs" />
-     <Compile Include="Assets\UI\SampleUI\Scripts\DragMe.cs" />
-     <Compile Include="Assets\UI\SampleUI\Scripts\DragPanel.cs" />
-     <Compile Include="Assets\UI\SampleUI\Scripts\DropMe.cs" />
-     <Compile Include="Assets\UI\SampleUI\Scripts\PanelManager.cs" />
-     <Compile Include="Assets\UI\SampleUI\Scripts\ResizePanel.cs" />
-     <Compile Include="Assets\UI\SampleUI\Scripts\ScrollDetailTexture.cs" />
-     <Compile Include="Assets\UI\SampleUI\Scripts\ShowSliderValue.cs" />
-     <Compile Include="Assets\UI\SampleUI\Scripts\TiltWindow.cs" />
-     <None Include="Assets\UI\SampleUI\Fonts\Jupiter\LICENSE.txt" />
-     <None Include="Assets\UI\SampleUI\Textures and Sprites\SF UI\Background\LICENSE.txt" />
-     <None Include="Assets\UI\SampleUI\Materials\UI-Default-No-Alpha.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

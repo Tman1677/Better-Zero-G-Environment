@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
-using UnityEngine.Networking;
 //to be assigned to player body
-public class RotationHandler : NetworkBehaviour, PlayerScript {
+public class RotationHandler : MonoBehaviour, PlayerScript {
 	#region declarations
 	RaycastHit hit; //the raycast to see which object we will be landing on, borrowed by BasicMovement via the sameObject bool
 
@@ -49,9 +48,6 @@ public class RotationHandler : NetworkBehaviour, PlayerScript {
 
 	#region onUpdate
 	void Update () {
-		if (!isLocalPlayer) {
-			return;
-		}
 		rotating ();
 		cameraRotation();
 		slidingCurves ();

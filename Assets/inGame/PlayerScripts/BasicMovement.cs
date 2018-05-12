@@ -1,9 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking;
 //assign this script to the players body
-public class BasicMovement : NetworkBehaviour, PlayerScript {
+public class BasicMovement : MonoBehaviour, PlayerScript {
 	#region declarations
 	Player player;
 	#endregion
@@ -18,9 +17,6 @@ public class BasicMovement : NetworkBehaviour, PlayerScript {
 	
 	#region onUpdate
 	void Update () {
-		if (!isLocalPlayer) {
-			return;
-		}
 		climbing (); //code for slow movement with wasd
 		if (Input.GetKeyDown (KeyCode.Space)) {
 			if (player.contact) {
@@ -36,9 +32,6 @@ public class BasicMovement : NetworkBehaviour, PlayerScript {
 		}
 	}
 	void LateUpdate() {
-		if (!isLocalPlayer) {
-			return;
-		}
 		grab (); //code for stopping movement when wall sliding
 	}
 	void grab () { //pretty self explanatory, not the if(contact) part is in the main method

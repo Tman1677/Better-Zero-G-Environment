@@ -1,10 +1,9 @@
 ﻿using UnityEngine;
-using UnityEngine.Networking;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 
-public class Player : NetworkBehaviour {
+public class Player : MonoBehaviour {
 	#region declarations
 	[HideInInspector]	public bool contact = true; //pretty universal test to check if touching a wall or not
 	[HideInInspector]	public Rigidbody rb;
@@ -20,7 +19,6 @@ public class Player : NetworkBehaviour {
 	[HideInInspector]	public GameObject gun;
 	[HideInInspector]	public GameObject attached;
 	[HideInInspector]	public Vector3 groundNormal;
-	[HideInInspector]	public GunRotation gunRotation;
 	[HideInInspector]	public Jetpack jetpack;
 						public float boostSpeed = 20;
 						public float jumpSpeed = 20; //multiplier for how fast one jumps
@@ -42,14 +40,12 @@ public class Player : NetworkBehaviour {
 		basicMovement = GetComponent<BasicMovement> ();
 		collisionHandler = GetComponent<CollisionHandler> ();
 		rotationHandler = GetComponent<RotationHandler> ();
-		gunRotation = gun.GetComponent<GunRotation> ();
 		gui = GetComponent<GUICode> ();
 
 		playerScripts.Add (basicMovement);
 		playerScripts.Add (collisionHandler);
 		playerScripts.Add (rotationHandler);
 		playerScripts.Add (gui);
-		playerScripts.Add (gunRotation);
 
 		if(hasJetpack()) { //Run the load function on the jetpack if it exists
 			jetpack = getJetpack ().GetComponent<Jetpack> ();
@@ -64,9 +60,6 @@ public class Player : NetworkBehaviour {
 	}
 
 	void localStart() { //initialization of player and calling player scripts loads in the correct order
-		if (!isLocalPlayer) {
-			return;
-		}
 
 		mainCamera.GetComponent<Camera>().enabled = false;
 		cam.GetComponent<Camera>().enabled = true;

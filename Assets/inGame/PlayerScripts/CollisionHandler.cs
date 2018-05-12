@@ -1,9 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking;
 
-public class CollisionHandler : NetworkBehaviour, PlayerScript {
+public class CollisionHandler : MonoBehaviour, PlayerScript {
 	#region declarations
 	BasicMovement basicMovement;
 	Player player;
@@ -20,9 +19,6 @@ public class CollisionHandler : NetworkBehaviour, PlayerScript {
 	
 	#region onUpdate
 	void Update () {
-		if (!isLocalPlayer) {
-			return;
-		}
 		//player.contact = checkContact ();
 		
 	}
@@ -31,9 +27,6 @@ public class CollisionHandler : NetworkBehaviour, PlayerScript {
 	#region onCollision
 	void OnCollisionEnter(Collision col) {
 		
-		if (!isLocalPlayer) {
-			return;
-		}
 		if (col.collider.tag == "Wall") {
 			player.contact = true; //for use by other methods
 			player.attached = col.gameObject;

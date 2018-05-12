@@ -1,9 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking;
 //to be placed on the jetpack object
-public class Jetpack : NetworkBehaviour,PlayerScript {
+public class Jetpack : MonoBehaviour,PlayerScript {
 	#region declarations
 	public int fuel = 0;
 	RotationHandler rotationHandler;

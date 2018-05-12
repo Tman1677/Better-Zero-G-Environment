@@ -1,9 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking;
 
-public class Shooting : NetworkBehaviour {
+public class Shooting : MonoBehaviour {
 	#region declarations
 	Player player;
 	Transform gunTip;
