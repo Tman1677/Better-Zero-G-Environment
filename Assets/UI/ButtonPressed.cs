@@ -35,7 +35,7 @@ public class ButtonPressed : MonoBehaviour {
 	}
 	public void joinGame() {
 		NetworkController.connectionType = NetworkController.connectionTypes.client;
-		NetworkController.matchHost = "localhost";
+		NetworkController.matchHost = "192.168.86.186";
 		SceneManager.LoadScene ("MainGame");
 	}
 }
