@@ -124,8 +124,10 @@ public class RotationHandler : MonoBehaviour, PlayerScript {
 		
 			//if (hit.collider.tag == "Wall") {
 				//this turns desiredRotation into one that has the right vertical alignment using the FromToRotation but keeps the original other rotations
-				desiredRotation = Quaternion.FromToRotation (player.body.transform.up, hit.normal) * baseBodyRotation; //order matters for global rotation
-				angleBetween = -1; //start rotation to rotating()
+
+			desiredRotation = Quaternion.FromToRotation (player.body.transform.up, hit.normal) * baseBodyRotation; //order matters for global rotation
+
+			angleBetween = -1; //start rotation to rotating()
 			//}
 			if (hit.collider.name == lastObject) { //check if it's the same object we're already on, probably a better way to register this
 				sameObject = true; //passed to BasicMovement

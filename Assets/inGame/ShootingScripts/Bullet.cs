@@ -19,7 +19,9 @@ public class Bullet : MonoBehaviour {
 
 	#region onCollision
 	void OnCollisionEnter(Collision col) {
-		Debug.Log (col.collider.name);
+		if (col.collider.name.Contains ("smallTarget")) {
+			Destroy (col.collider.gameObject);
+		}
 	}
 
 

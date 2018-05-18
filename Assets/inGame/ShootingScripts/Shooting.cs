@@ -6,7 +6,9 @@ public class Shooting : MonoBehaviour {
 	#region declarations
 	Player player;
 	Transform gunTip;
+	public float bulletSpeed;
 	public Bullet bulletTemplate;
+	int counter = 0;
 	#endregion
 
 	#region onStart
@@ -18,9 +20,13 @@ public class Shooting : MonoBehaviour {
 
 	#region onUpdate
 	void Update () {
-		if (Input.GetKey (KeyCode.Mouse0)) {
-			shoot ();
+		if(counter>=3) {
+			if (Input.GetKey (KeyCode.Mouse0)) {
+				shoot ();
+				counter = 0;
+			}
 		}
+		counter++;
 	}
 
 	#endregion
@@ -28,10 +34,9 @@ public class Shooting : MonoBehaviour {
 	#region functions
 	void shoot() {
 		Bullet temp = Instantiate(bulletTemplate, gunTip.transform.position, transform.rotation * Quaternion.Euler(90,0,0));
-		temp.GetComponent<Rigidbody> ().velocity = player.rb.velocity + player.head.transform.forward * 30f;
+		temp.GetComponent<Rigidbody> ().velocity = player.rb.velocity + player.head.transform.forward * bulletSpeed;
 		temp.shooter = player; //assign the Shooting killer to the bullet so he gets points
-		#warning this isn't working for some reason 
-		Destroy (temp, 2); 
+		Destroy (temp.gameObject, 20); 
 	}
 	#endregion
 

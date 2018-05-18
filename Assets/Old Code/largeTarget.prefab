@@ -108,19 +108,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1014856490179780}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 133f9698efa5f46e3aa12f6632dcdc1c, type: 3}
+  m_Script: {fileID: 11500000, guid: 6bc36813f5ab14898baf0976ce486c3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 1000
+  startingHealth: 100
   currentHealth: 0
   sinkSpeed: 2.5
-  scoreValue: 50
+  scoreValue: 10
   deathClip: {fileID: 0}
-  selfRB: {fileID: 54117683410862464}
-  movementSpeed: 5
-  self: {fileID: 1014856490179780}
-  explosionFactor: 4
-  radius: 12
+  selfRB: {fileID: 0}
+  movementSpeed: 0
+  self: {fileID: 0}
+  explosionFactor: 0
+  radius: 0
 --- !u!135 &135752015442342374
 SphereCollider:
   m_ObjectHideFlags: 1
